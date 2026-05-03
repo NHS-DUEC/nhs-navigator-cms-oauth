@@ -30,14 +30,22 @@ app.get('/callback', async (req, res) => {
 
     if (data.access_token) {
       const message = JSON.stringify({ token: data.access_token, provider: 'github' })
-      script = `<script>window.opener.postMessage('authorization:github:success:${message}','*');window.close();</script>`
+      script = `<script>
+(function() {
+  function receiveMessage(e) {
+    window.opener.postMessage('authorization:github:success:${message}', e.origin)
+  }
+  window.addEventListener('message', receiveMessage, false)
+  window.opener.postMessage('authorizing:github', '*')
+})()
+</script>`
     } else {
       const message = JSON.stringify({ error: data.error || 'unknown_error' })
-      script = `<script>window.opener.postMessage('authorization:github:error:${message}','*');window.close();</script>`
+      script = `<script>window.opener.postMessage('authorization:github:error:${message}', '*');window.close();</script>`
     }
   } catch (err) {
     const message = JSON.stringify({ error: err.message })
-    script = `<script>window.opener.postMessage('authorization:github:error:${message}','*');window.close();</script>`
+    script = `<script>window.opener.postMessage('authorization:github:error:${message}', '*');window.close();</script>`
   }
 
   res.send(script)
