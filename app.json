@@ -4,7 +4,7 @@
   "env": {
     "OAUTH_CLIENT_ID": { "description": "GitHub OAuth App client ID", "required": true },
     "OAUTH_CLIENT_SECRET": { "description": "GitHub OAuth App client secret", "required": true },
-    "SCOPES": { "description": "GitHub OAuth scopes", "required": false, "value": "public_repo" }
+    "SCOPES": { "description": "GitHub OAuth scopes", "required": false, "value": "repo" }
   },
   "formation": { "web": { "quantity": 1, "size": "eco" } },
   "buildpacks": [{ "url": "heroku/nodejs" }]
