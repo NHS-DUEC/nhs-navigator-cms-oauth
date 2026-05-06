@@ -1,0 +1,11 @@
+{
+  "name": "NHS ATN CMS OAuth",
+  "description": "GitHub OAuth proxy for Decap CMS — ATN design history",
+  "env": {
+    "OAUTH_CLIENT_ID": { "description": "GitHub OAuth App client ID", "required": true },
+    "OAUTH_CLIENT_SECRET": { "description": "GitHub OAuth App client secret", "required": true },
+    "SCOPES": { "description": "GitHub OAuth scopes", "required": false, "value": "repo,user" }
+  },
+  "formation": { "web": { "quantity": 1, "size": "eco" } },
+  "buildpacks": [{ "url": "heroku/nodejs" }]
+}

@@ -1,5 +1,5 @@
 {
-  "name": "nhs-navigator-cms-oauth",
+  "name": "nhs-atn-cms-oauth",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,6 +10,9 @@
   "author": "",
   "license": "ISC",
   "type": "commonjs",
+  "engines": {
+    "node": "22.x"
+  },
   "dependencies": {
     "express": "^5.2.1",
     "node-fetch": "^2.7.0"
